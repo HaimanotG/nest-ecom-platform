@@ -58,42 +58,80 @@ $ pnpm run test:e2e
 $ pnpm run test:cov
 ```
 
-## Deployment
+## Module Creation Script Usage
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
-
+First, make the script executable:
 ```bash
-$ pnpm install -g mau
-$ mau deploy
+chmod +x create-module.sh
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+### Creating Modules for Different Apps
+1. Create a user module in the users app:
+```bash
+./create-module.sh users auth
+./create-module.sh users profile
+```
 
-## Resources
+2. Create inventory-related modules:
+```bash
+./create-module.sh inventory products
+./create-module.sh inventory categories
+./create-module.sh inventory stock
+ ```
 
-Check out a few resources that may come in handy when working with NestJS:
+3. Create order-related modules:
+```bash
+./create-module.sh orders cart
+./create-module.sh orders checkout
+./create-module.sh orders shipping
+ ```
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+ 4. Create payment-related modules:
+```bash
+./create-module.sh payment transactions
+./create-module.sh payment refunds
+```
 
-## Support
+ 5. Create gateway modules:
+```bash
+./create-module.sh gateway proxy
+./create-module.sh gateway rate-limit
+```
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+### Generated Files
+Each module comes with:
 
-## Stay in touch
+- Basic module configuration
+- Controller template
+- Service template
+- Entity definition
+- DTOs (Create, Update, Response)
+- Repository interface and implementation
+- Index files for easy imports
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+### Module Structure Generated
+Each module will be created with the following structure:
 
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+📁 module-name/
+├── 📁 domain/
+│   ├── 📁 aggregates/
+│   ├── 📁 entities/
+│   ├── 📁 value-objects/
+│   ├── 📁 repositories/
+│   ├── 📁 constants/
+│   ├── 📁 exceptions/
+│   ├── 📁 factories/
+│   └── 📁 policies/
+├── 📁 application/
+│   ├── 📁 commands/
+│   ├── 📁 queries/
+│   ├── 📁 events/
+│   └── 📁 subscribers/
+├── 📁 infrastructure/
+│   ├── 📁 repositories/
+│   └── 📁 persistence/
+└── 📁 interfaces/
+    ├── 📁 controllers/
+    ├── 📁 dto/
+    ├── 📁 facades/
+    └── 📁 validators/
