@@ -135,3 +135,31 @@ Each module will be created with the following structure:
     ├── 📁 dto/
     ├── 📁 facades/
     └── 📁 validators/
+
+
+## Commit Message Convention
+We follow [Conventional Commits](https://www.conventionalcommits.org/) specification for our commit messages:
+
+### Commit Types
+- feat : New feature
+- fix : Bug fix
+- docs : Documentation only changes
+- style : Changes that do not affect the meaning of the code (white-space, formatting, etc)
+- refactor : Code change that neither fixes a bug nor adds a feature
+- perf : Code change that improves performance
+- test : Adding missing tests or correcting existing tests
+- build : Changes that affect the build system or external dependencies
+- ci : Changes to our CI configuration files and scripts
+- chore : Other changes that don't modify src or test files
+- revert : Reverts a previous commit
+### Rules
+- Type is mandatory and must be lowercase
+- Subject is mandatory and must be sentence-case
+- Body is optional and must not exceed 100 characters per line
+- A blank line is required between the subject and body
+
+### Examples
+feat: Add user authentication
+fix(auth): Fix token validation
+docs: Update API documentation
+refactor(api): Simplify error handling
