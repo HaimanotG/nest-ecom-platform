@@ -1,7 +1,5 @@
 import { NestFactory } from '@nestjs/core';
 import { UsersModule } from './users.module';
-import { MetricsInterceptor } from '@app/common';
-import { Counter, Histogram } from 'prom-client';
 
 async function bootstrap() {
   const app = await NestFactory.create(UsersModule, {
